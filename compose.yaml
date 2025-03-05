@@ -1,0 +1,19 @@
+name: Symfony Certification
+
+services:
+    php:
+        container_name: sc_php
+        build: .docker/php
+        image: symfony-certification-php
+        volumes:
+            - .:/usr/src
+        working_dir: /usr/src
+        restart: no
+        stdin_open: true
+        tty: true
+        networks:
+            - network
+
+networks:
+    network:
+        name: sc_network
