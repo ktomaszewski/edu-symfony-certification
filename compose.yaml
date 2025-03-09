@@ -8,7 +8,7 @@ services:
         volumes:
             - ./:/usr/src
             - ./.docker/php/sc-php.ini:/usr/local/etc/php/conf.d/sc-php.ini
-            - ./var/docker/php:/tmp/sc/php
+            - ./var/log/docker/php:/tmp/sc/php
         working_dir: /usr/src
         restart: no
         stdin_open: true
