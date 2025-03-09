@@ -1,2 +1,6 @@
-# DEV
+# IDE
 /.idea
+
+# var
+/var/*
+!/var/.gitkeep

@@ -6,11 +6,15 @@ services:
         build: .docker/php
         image: symfony-certification-php
         volumes:
-            - .:/usr/src
+            - ./:/usr/src
+            - ./.docker/php/sc-php.ini:/usr/local/etc/php/conf.d/sc-php.ini
+            - ./var/docker/php:/tmp/sc/php
         working_dir: /usr/src
         restart: no
         stdin_open: true
         tty: true
+        ports:
+            - '8000:8000'
         networks:
             - network
 
