@@ -5,15 +5,16 @@ docker_container_php = sc_php
 .PHONY: help
 help:
 	@echo 'Please select one of the rules from the Makefile 🔨';
-	@echo "---------------------------------------------------"
-	@echo "| make help    | Show this help table             |"
-	@echo "| make up      | Start containers                 |"
-	@echo "| make down    | Stop containers                  |"
-	@echo "| make restart | Stop and start containers        |"
-	@echo "| make build   | Build images                     |"
-	@echo "| make rebuild | Stop, build and start containers |"
-	@echo "| make php     | Enter bash on PHP container      |"
-	@echo "---------------------------------------------------"
+	@echo "--------------------------------------------------------"
+	@echo "| make help    | Show this help table                  |"
+	@echo "| make up      | Start containers                      |"
+	@echo "| make down    | Stop containers                       |"
+	@echo "| make restart | Stop and start containers             |"
+	@echo "| make build   | Build images                          |"
+	@echo "| make rebuild | Stop, build and start containers      |"
+	@echo "| make php     | Enter bash on PHP container           |"
+	@echo "| make secret  | Generate a secret e.g. for APP_SECRET |"
+	@echo "--------------------------------------------------------"
 	@echo ""
 	@echo 'To start a project for the first time use "make rebuild" 🔨'
 
@@ -45,3 +46,7 @@ rebuild:
 .PHONY: php
 php:
 	docker exec -it $(docker_container_php) bash
+
+.PHONY: secret
+secret:
+	docker exec -it $(docker_container_php) php -r "echo bin2hex(random_bytes(16)) . PHP_EOL;"

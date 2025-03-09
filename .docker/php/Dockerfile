@@ -3,6 +3,7 @@ FROM php:8.4-cli
 RUN apt-get update
 
 RUN apt-get install -y git
+RUN apt-get install -y libzip-dev zip unzip && docker-php-ext-install zip
 RUN apt-get install -y libicu-dev && docker-php-ext-configure intl && docker-php-ext-install intl
 RUN docker-php-ext-install opcache
 RUN pecl install xdebug && docker-php-ext-enable xdebug
