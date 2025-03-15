@@ -4,7 +4,7 @@
 declare(strict_types=1);
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
-use SymfonyCertification\Shared\Symfony\Kernel;
+use SymfonyCertification\Shared\Kernel;
 
 if (!is_dir(dirname(__DIR__) . '/vendor')) {
     throw new LogicException('Dependencies are missing. Try running "composer install".');

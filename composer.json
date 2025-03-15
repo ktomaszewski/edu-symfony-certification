@@ -35,12 +35,16 @@
     },
     "autoload": {
         "psr-4": {
-            "SymfonyCertification\\": "src/"
+            "SymfonyCertification\\Shared\\": "src/Shared/src",
+            "SymfonyCertification\\App\\": "src/App/src",
+            "SymfonyCertification\\Components\\": "src/Components/src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SymfonyCertification\\Tests\\": "tests/"
+            "SymfonyCertification\\Shared\\Tests\\": "src/Shared/tests",
+            "SymfonyCertification\\App\\Tests\\": "src/App/tests",
+            "SymfonyCertification\\Components\\Tests\\": "src/Components/tests"
         }
     },
     "replace": {
