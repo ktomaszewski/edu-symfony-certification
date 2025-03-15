@@ -1,8 +1,8 @@
 .DEFAULT_GOAL := help
 
 SILENT_MAKE = @$(MAKE) -s
-
 docker_container_php = sc_php
+app_url = https://127.0.0.1:8000
 
 .PHONY: help
 help:
@@ -17,19 +17,20 @@ help:
 	@echo "| make secret   | Generate a secret e.g. for APP_SECRET |"
 	@echo "| make cache    | Clear and warmup cache                |"
 	@echo "| make security | Check app security                    |"
+	@echo "| make url      | Show app URL                          |"
 	@echo "--------------------------------------------------------"
 	@echo ""
 	@echo 'To start a project for the first time use "make build" 🔨'
 
-.PHONY: .server-info
-.server-info:
+.PHONY: url
+url:
 	@echo ""
-	@echo "Application is running on https://127.0.0.1:8000 🔨"
+	@echo "Application URL: $(app_url) 🔨"
 
 .PHONY: up
 up:
 	docker compose up -d
-	$(SILENT_MAKE) .server-info
+	$(SILENT_MAKE) url
 
 .PHONY: down
 down:
@@ -46,7 +47,7 @@ build:
 	docker compose build
 	$(SILENT_MAKE) up
 	docker exec $(docker_container_php) composer install --dev
-	$(SILENT_MAKE) .server-info
+	$(SILENT_MAKE) url
 
 .PHONY: php
 php:
