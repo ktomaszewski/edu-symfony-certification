@@ -1,0 +1,3 @@
+sc_app:
+    resource: '@ScAppBundle/config/routes.yaml'
+    type: yaml
