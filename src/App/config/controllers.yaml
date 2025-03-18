@@ -4,4 +4,6 @@ services:
         autoconfigure: false
         public: true
 
-    SymfonyCertification\App\Controller\LuckyNumberController: ~
+    SymfonyCertification\App\Controller\LuckyNumberController:
+        arguments:
+            - '@twig'

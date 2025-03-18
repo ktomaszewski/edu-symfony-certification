@@ -8,22 +8,26 @@ use Random\RandomException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Throwable;
+use Twig\Environment;
 
 use function random_int;
-use function sprintf;
 
 #[Route('/lucky-number', name: 'scApp_luckyNumber')]
 final readonly class LuckyNumberController
 {
+    public function __construct(private Environment $twig)
+    {
+    }
+
     public function __invoke(): Response
     {
         try {
             $luckyNumber = $this->generateLuckyNumber();
         } catch (Throwable $exception) {
-            return new Response(sprintf('Error: %s', $exception->getMessage()), Response::HTTP_INTERNAL_SERVER_ERROR);
+            return new Response($this->twig->render('@ScAppBundle/errors/general.html.twig', ['exception' => $exception]));
         }
 
-        return new Response(sprintf('Lucky number: %d', $luckyNumber));
+        return new Response($this->twig->render('@ScAppBundle/pages/lucky_number.html.twig', ['number' => $luckyNumber]));
     }
 
     /** @throws RandomException */

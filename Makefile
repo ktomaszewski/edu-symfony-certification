@@ -16,6 +16,7 @@ help:
 	@echo "| make php      | Enter bash on PHP container           |"
 	@echo "| make secret   | Generate a secret e.g. for APP_SECRET |"
 	@echo "| make cache    | Clear and warmup cache                |"
+	@echo "| make assets   | Install assets from bundles           |"
 	@echo "| make security | Check app security                    |"
 	@echo "| make url      | Show app URL                          |"
 	@echo "--------------------------------------------------------"
@@ -60,6 +61,10 @@ secret:
 .PHONY: cache
 cache:
 	docker exec $(docker_container_php) composer run sc:app:clear-cache
+
+.PHONY: assets
+assets:
+	docker exec $(docker_container_php) composer run sc:app:install-assets
 
 .PHONY: security
 security:
