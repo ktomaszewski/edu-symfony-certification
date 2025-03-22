@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace SymfonyCertification\App\Controller;
 
 use Random\RandomException;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Throwable;
@@ -12,7 +13,7 @@ use Twig\Environment;
 
 use function random_int;
 
-#[Route('/lucky-number', name: 'scApp_luckyNumber')]
+#[Route(path: '/lucky-number', name: 'sc_app_luckyNumber', methods: [Request::METHOD_GET])]
 final readonly class LuckyNumberController
 {
     public function __construct(private Environment $twig)

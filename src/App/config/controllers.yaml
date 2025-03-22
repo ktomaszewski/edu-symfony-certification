@@ -7,3 +7,23 @@ services:
     SymfonyCertification\App\Controller\LuckyNumberController:
         arguments:
             - '@twig'
+
+    SymfonyCertification\App\Controller\RouteController:
+        arguments:
+            - '@Symfony\Component\Routing\Generator\UrlGeneratorInterface'
+
+    SymfonyCertification\App\Controller\SignedController:
+        arguments:
+            - '@Symfony\Component\Routing\Generator\UrlGeneratorInterface'
+            - '@Symfony\Component\HttpFoundation\UriSigner'
+
+    SymfonyCertification\App\Controller\MyBrowserController: ~
+    SymfonyCertification\App\Controller\NumberController: ~
+    SymfonyCertification\App\Controller\LanguageController: ~
+    SymfonyCertification\App\Controller\HealthCheckController: ~
+    SymfonyCertification\App\Controller\Localized\LocalizedController: ~
+
+    SymfonyCertification\App\Controller\Checker\BrowserChecker:
+        public: true
+        autoconfigure: true
+        autowire: true
